@@ -1,0 +1,53 @@
+<div class="wrapper">
+  <h2>🎯 Whack-a-Mole</h2>
+
+  <div class="stats">
+    <div>⏱ Time: <b>{{ timeLeft }}</b>s</div>
+    <div>⭐ Score: <b>{{ score }}</b></div>
+    <div>🔥 Combo: <b>{{ combo }}</b> (Best: {{ bestCombo }})</div>
+    <div>❤️ Lives: <b>{{ lives }}</b></div>
+    <div>🏆 High: <b>{{ highScore }}</b></div>
+  </div>
+
+  <div class="controls">
+    <button (click)="start()" [disabled]="playing">Start</button>
+    <button (click)="pause()" [disabled]="!playing">Pause</button>
+    <button (click)="resume()" [disabled]="playing || timeLeft<=0">Resume</button>
+    <button (click)="restart()">Restart</button>
+  </div>
+
+  <div class="settings">
+    <label>
+      Difficulty:
+      <select [(ngModel)]="difficulty" [disabled]="!canChangeSettings()">
+        <option [ngValue]="1">Easy</option>
+        <option [ngValue]="2">Normal</option>
+        <option [ngValue]="3">Hard</option>
+      </select>
+    </label>
+
+    <label class="toggle">
+      <input type="checkbox" [(ngModel)]="soundsOn" />
+      Sounds
+    </label>
+  </div>
+
+  <div class="grid" [ngStyle]="gridStyle()">
+    <button
+      class="hole"
+      *ngFor="let c of cells"
+      [class.mole]="c.isMole"
+      [class.pop]="c.popping"
+      (click)="hit(c)"
+      aria-label="hole"
+    >
+      <span class="mole-emoji">🐹</span>
+    </button>
+  </div>
+
+  <div class="gameover" *ngIf="!playing && timeLeft<=0">
+    <h3>Game Over!</h3>
+    <p>Your score: {{ score }}</p>
+    <button (click)="restart()">Play Again</button>
+  </div>
+</div>

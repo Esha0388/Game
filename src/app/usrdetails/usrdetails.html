@@ -1,0 +1,19 @@
+<div *ngIf="user" class="card">
+  <p><b>Name:</b> {{user.name}}</p>
+  <p><b>Username:</b> {{user.username}}</p>
+  <p><b>Email:</b> {{user.email}}</p>
+
+  <div class="section">
+    <h3>Address</h3>
+    <p>{{user.add.street}}</p>
+    <p>{{user.add.suite}}</p>
+    <p>{{user.add.city}}</p>
+    <p>{{user.add.zipcode}}</p>
+  </div>
+
+  <div class="section">
+    <h3>Geo</h3>
+    <p>Lat: {{user.geo.lat}}</p>
+    <p>Lng: {{user.geo.lng}}</p>
+  </div>
+</div>

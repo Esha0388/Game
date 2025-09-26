@@ -1,0 +1,83 @@
+.wrapper {
+  max-width: 480px;
+  margin: 24px auto;
+  padding: 12px;
+  text-align: center;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.stats, .controls, .settings {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.controls button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 10px;
+  background: #4f46e5;
+  color: white;
+  cursor: pointer;
+}
+.controls button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.controls button:hover:not([disabled]) {
+  filter: brightness(1.05);
+}
+
+.settings select {
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.toggle {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  margin-top: 10px;
+}
+
+.hole {
+  position: relative;
+  border: 0;
+  border-radius: 12px;
+  background: radial-gradient(circle at 50% 55%, #5a3d23 0%, #3a2819 60%, #2a1c12 100%);
+  box-shadow: inset 0 6px 18px rgba(0,0,0,0.35);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.hole .mole-emoji {
+  font-size: 0; /* hidden unless mole class present */
+  transition: transform 0.12s ease;
+}
+
+.hole.mole .mole-emoji {
+  font-size: 34px;
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%) translateY(10%);
+}
+
+.hole.mole.pop .mole-emoji {
+  transform: translateX(-50%) translateY(-10%);
+}
+
+.gameover {
+  margin-top: 14px;
+}
